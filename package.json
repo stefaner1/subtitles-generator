@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "A node module to generate subtitles by segmenting a list of time-coded text.",
   "main": "index.js",
+   "type": "module",
   "scripts": {
     "lint": "npx eslint --ignore-path .eslintignore .",
     "lint:fix": "eslint --ignore-path .eslintignore . --fix",
