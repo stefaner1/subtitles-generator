@@ -37,8 +37,19 @@ function addTimecodesToLines(wordsList, lines) {
   let startWordCounter = 0;
   let endWordCounter = 0;
   const results = lines.map((line) => {
+    if(line.includes("/\n")){
+      //console.log(line);
+    }
+    // console.log(countWords(line));
     endWordCounter += countWords(line);
     const jsonLine = { text: line.trim() };
+    // console.log(startWordCounter);
+    if(wordsList[startWordCounter]==undefined || wordsList[endWordCounter - 1]==undefined) {
+      //console.log(line);
+      var old_length=endWordCounter-startWordCounter;
+      startWordCounter=wordsList.length-1-old_length;
+      endWordCounter=wordsList.length-1;
+    }
     jsonLine.start = wordsList[startWordCounter].start;
     jsonLine.end = wordsList[endWordCounter - 1].end;
     startWordCounter = endWordCounter;
