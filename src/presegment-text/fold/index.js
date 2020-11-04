@@ -18,8 +18,12 @@ function foldWordsReturnArray(textArray, foldNumber = 35) {
     // cover edge case last element in array does not have a next element
       if (list[index + 1] !== undefined) {
         var nextElementLength = list[index + 1].length;
-        //check if adding next word would make the line go over the char limit foldNumber
-        if ((counter + nextElementLength) < foldNumber) {
+         //Check if next word is last
+        var next_last_letter=list[index + 1].slice(-1);
+        var next_is_last=[".","!","?"].includes(next_last_letter);
+
+         //check if adding next word would make the line go over the char limit foldNumber
+         if ((counter + nextElementLength) < foldNumber || next_is_last) {
           return word;
         } else {
           // if it makes it go over, reset counter, return and add line break
